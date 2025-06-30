@@ -70,8 +70,10 @@ def process_data(
     return X, y, encoder, lb
 
 def apply_label(inference):
-    """ Convert the binary label in a single inference sample into string output."""
-    if inference[0] == 1:
+    """Convert a single binary label (0 or 1) into string output."""
+    if inference == 1:
         return ">50K"
-    elif inference[0] == 0:
+    elif inference == 0:
         return "<=50K"
+    else:
+        raise ValueError("Invalid inference result. Must be 0 or 1.")
